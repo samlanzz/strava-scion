@@ -19,7 +19,7 @@ export class PersonComponent implements OnInit {
       .pipe(
         map(paramMap => paramMap.get('id')),
         distinctUntilChanged(),
-        switchMap(id => of({firstname: 'Steve', lastname: 'Jobs'})),
+        switchMap(() => of({firstname: 'Steve', lastname: 'Jobs'})),
         takeUntil(this.destroy$)
       )
       .subscribe(person => {
