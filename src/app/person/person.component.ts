@@ -24,7 +24,7 @@ export class PersonComponent implements OnInit {
       )
       .subscribe(person => {
         view.title = `${person.firstname} ${person.lastname}`;
-        view.heading = 'Person';
+        view.heading = 'Person 1';
       });
   }
 
