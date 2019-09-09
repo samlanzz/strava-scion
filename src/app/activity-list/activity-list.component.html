@@ -1,0 +1,10 @@
+<div *ngFor="let activity of activities">
+  <span [ngSwitch]="activity.type">
+    <div *ngSwitchCase="'Ride'" class="material-icons">directions_bike</div>
+    <div *ngSwitchCase="'Workout'" class="material-icons">fitness_center</div>
+    <div *ngSwitchCase="'Run'" class="material-icons">directions_run</div>
+    <div *ngSwitchCase="'Yoga'" class="material-icons">emoji_people</div>
+    <div *ngSwitchCase="'Swim'" class="material-icons">pool</div>
+  </span>
+  <a wbRouterLink="/activity/{{activity.id}}">{{activity.name}}</a>
+</div>

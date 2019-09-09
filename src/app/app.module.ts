@@ -6,16 +6,16 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { WorkbenchModule } from '@scion/workbench';
-import { PersonListComponent } from './person-list/person-list.component';
-import { PersonComponent } from './person/person.component';
+import { ActivityListComponent } from './activity-list/activity-list.component';
+import { ActivityComponent } from './activity/activity.component';
 
 const appRoutes: Routes = [];
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonListComponent,
-    PersonComponent
+    ActivityListComponent,
+    ActivityComponent
   ],
   imports: [
     WorkbenchModule.forRoot(),
