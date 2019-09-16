@@ -12,6 +12,7 @@ import { AuthService } from './core/auth/auth.service';
 import { TokenResolveComponent } from './core/auth/token-resolve/token-resolve.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StravaHttpInterceptor } from './api-services/strava-http.interceptor';
+import { ClarityModule } from '@clr/angular';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { StravaHttpInterceptor } from './api-services/strava-http.interceptor';
     RouterModule, // module required by SCION Workbench
     BrowserAnimationsModule, // module required by SCION Workbench
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ClarityModule
   ],
   providers: [
     AuthService,
