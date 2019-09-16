@@ -12,26 +12,14 @@ export class StravaApiService {
   }
 
   getMyInfo(): Observable<any> {
-    return this.http.get(`${this.baseUrl}athletes/23576093`, {
-      headers: {
-        Authorization: `Bearer ${this.authService.accessToken}`
-      }
-    });
+    return this.http.get(`${this.baseUrl}athletes/23576093`);
   }
 
   getAllActivities(): Observable<any> {
-    return this.http.get(`${this.baseUrl}athlete/activities`, {
-      headers: {
-        Authorization: `Bearer ${this.authService.accessToken}`
-      }
-    });
+    return this.http.get(`${this.baseUrl}athlete/activities`);
   }
 
   getActivityById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/activities/${id}`, {
-      headers: {
-        Authorization: `Bearer ${this.authService.accessToken}`
-      }
-    });
+    return this.http.get(`${this.baseUrl}/activities/${id}`);
   }
 }

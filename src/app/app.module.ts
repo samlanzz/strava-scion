@@ -10,6 +10,8 @@ import { ActivityListComponent } from './activity-list/activity-list.component';
 import { ActivityComponent } from './activity/activity.component';
 import { AuthService } from './core/auth/auth.service';
 import { TokenResolveComponent } from './core/auth/token-resolve/token-resolve.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { StravaHttpInterceptor } from './api-services/strava-http.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,14 @@ import { TokenResolveComponent } from './core/auth/token-resolve/token-resolve.c
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: StravaHttpInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

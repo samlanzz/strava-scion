@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { WbNavigationExtras, WorkbenchRouter } from '@scion/workbench';
+import { flatMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -42,11 +44,12 @@ export class AuthService {
       });
   }
 
-  refreshTokenFromApi(code: string) {
-    this.http.post(`https://www.strava.com/oauth/token?client_id=${environment.authConfig.clientId}&client_secret=${environment.authConfig.clientSecret}&grant_type=authorization_code&refresh_token=${this._tokenInfo.refresh_token}`, {})
-      .subscribe((tokenInfo: StravaTokenInfo) => {
+  refreshTokenFromApi(): Observable<StravaTokenInfo> {
+    return this.http.post(`https://www.strava.com/oauth/token?client_id=${environment.authConfig.clientId}&client_secret=${environment.authConfig.clientSecret}&grant_type=authorization_code&refresh_token=${this._tokenInfo.refresh_token}`, {})
+      .pipe(flatMap((tokenInfo: StravaTokenInfo) => {
         this._tokenInfo = tokenInfo;
-      });
+        return of(tokenInfo);
+      }));
   }
 }
 
