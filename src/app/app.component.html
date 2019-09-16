@@ -4,4 +4,17 @@
                itemCssClass="material-icons"
                routerLink="activities">
   </wb-activity>
+  <wb-activity title="Login"
+               itemText="arrow_right_alt"
+               itemCssClass="material-icons"
+               routerLink="token"
+               *ngIf="!auth; else profile">
+  </wb-activity>
+  <ng-template #profile>
+    <wb-activity title="Account"
+                 itemText="person"
+                 itemCssClass="material-icons"
+                 routerLink="profile">
+    </wb-activity>
+  </ng-template>
 </wb-workbench>
