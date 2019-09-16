@@ -15,8 +15,8 @@ export class StravaApiService {
     return this.http.get(`${this.baseUrl}athletes/23576093`);
   }
 
-  getAllActivities(): Observable<any> {
-    return this.http.get(`${this.baseUrl}athlete/activities`);
+  getActivities(amount: number = 30): Observable<any> {
+    return this.http.get(`${this.baseUrl}athlete/activities?per_page=${amount}`);
   }
 
   getActivityById(id: number): Observable<any> {

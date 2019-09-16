@@ -15,7 +15,7 @@ export class ActivityListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.stravaApiService.getAllActivities()
+    this.stravaApiService.getActivities()
       .subscribe(activities => {
         this.activities = activities;
       });

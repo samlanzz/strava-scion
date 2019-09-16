@@ -13,12 +13,14 @@ import { TokenResolveComponent } from './core/auth/token-resolve/token-resolve.c
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StravaHttpInterceptor } from './api-services/strava-http.interceptor';
 import { ClarityModule } from '@clr/angular';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ActivityListComponent,
     ActivityComponent,
+    StatisticsComponent,
     TokenResolveComponent
   ],
   imports: [

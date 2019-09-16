@@ -1,0 +1,70 @@
+<clr-datagrid [clrDgLoading]="isLoading">
+  <clr-dg-column [clrDgSortBy]="'type'">Type</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">Title</clr-dg-column>
+  <clr-dg-column [clrDgSortBy]="'start_date'">Date</clr-dg-column>
+  <clr-dg-column [clrDgField]="'achievement_count'">Achievements</clr-dg-column>
+  <clr-dg-column [clrDgField]="'kudos_count'">
+    <clr-icon shape="thumbs-up"></clr-icon>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'distance'">Distance</clr-dg-column>
+  <clr-dg-column [clrDgField]="'average_speed'">Avg. speed</clr-dg-column>
+  <clr-dg-column [clrDgField]="'max_speed'" [clrDgSortOrder]="descSortOrder">Max speed</clr-dg-column>
+  <clr-dg-column [clrDgSortBy]="'moving_time'">Time</clr-dg-column>
+  <clr-dg-column [clrDgField]="'elev_high'">Max elevation</clr-dg-column>
+  <clr-dg-column [clrDgField]="'elev_low'">Min elevation</clr-dg-column>
+  <clr-dg-column [clrDgField]="'total_elevation_gain'">Total elev. gain</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let activity of activities" class="cursor-pointer" wbRouterLink="/activity/{{activity.id}}">
+    <clr-dg-cell>
+      <ng-container [ngSwitch]="activity.type">
+        <div *ngSwitchCase="'Ride'" class="material-icons">directions_bike</div>
+        <div *ngSwitchCase="'Workout'" class="material-icons">fitness_center</div>
+        <div *ngSwitchCase="'Run'" class="material-icons">directions_run</div>
+        <div *ngSwitchCase="'Yoga'" class="material-icons">emoji_people</div>
+        <div *ngSwitchCase="'Swim'" class="material-icons">pool</div>
+        <div *ngSwitchCase="'Hike'" class="material-icons">terrain</div>
+      </ng-container>
+    </clr-dg-cell>
+    <clr-dg-cell>{{activity.name}}</clr-dg-cell>
+    <clr-dg-cell>{{activity.start_date | date}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="badge badge-warning">
+        {{activity.achievement_count}}
+      </span>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      <span class="badge" [class.badge-orange]="activity.kudos_count > 0">{{activity.kudos_count}}</span>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      <span *ngIf="activity.distance">
+        {{metersToKilometers(activity.distance)}} km
+      </span>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      <span *ngIf="activity.average_speed">
+        {{metersPerSecondToKilometersPerHour(activity.average_speed)}} km/h
+      </span>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      <span *ngIf="activity.max_speed">
+        {{metersPerSecondToKilometersPerHour(activity.max_speed)}} km/h
+      </span>
+    </clr-dg-cell>
+    <clr-dg-cell>{{secondsToTime(activity.moving_time)}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span *ngIf="activity.elev_high">
+        {{activity.elev_high}} m
+      </span>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      <span *ngIf="activity.elev_low">
+        {{activity.elev_low}} m
+      </span>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      <span *ngIf="activity.total_elevation_gain">
+        {{activity.total_elevation_gain}} m
+      </span>
+    </clr-dg-cell>
+  </clr-dg-row>
+</clr-datagrid>
