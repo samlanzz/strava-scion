@@ -1,0 +1,45 @@
+<div class="clr-row scion-fullheight" *ngIf="athlete; else spinner">
+  <div class="clr-col">
+    <div class="scion-fullheight">
+      <div class="profile-image">
+        <div class="image-rounded" [ngStyle]="{'background-image': 'url('+ athlete.profile + ')'}"></div>
+      </div>
+      <h2 class="text-center">{{athlete.firstname}} {{athlete.lastname}}</h2>
+      <span class="text-center">(@{{athlete.username}})</span>
+      <div class="scion-profile-body">
+        <form clrForm>
+          <clr-input-container class="clr-row">
+            <label for="country" class="clr-col-3">Country</label>
+            <input id="country" clrInput class="clr-col" placeholder="-" name="country" [ngModel]="athlete.country"
+                   readonly/>
+          </clr-input-container>
+          <clr-input-container class="clr-row">
+            <label for="state" class="clr-col-3">State</label>
+            <input id="state" clrInput class="clr-col" placeholder="-" name="state" [ngModel]="athlete.state" readonly/>
+          </clr-input-container>
+          <clr-input-container class="clr-row">
+            <label for="city" class="clr-col-3">City</label>
+            <input id="city" clrInput class="clr-col" placeholder="-" name="city" [ngModel]="athlete.city" readonly/>
+          </clr-input-container>
+          <clr-input-container class="clr-row">
+            <label for="sex" class="clr-col-3">Gender</label>
+            <input id="sex" clrInput class="clr-col" placeholder="-" name="sex" [ngModel]="athlete.sex" readonly/>
+          </clr-input-container>
+          <clr-input-container class="clr-row">
+            <label for="created_at" class="clr-col-3">Member since</label>
+            <input id="created_at" clrInput class="clr-col" placeholder="-" name="created_at"
+                   [ngModel]="athlete.created_at | date" readonly/>
+          </clr-input-container>
+        </form>
+      </div>
+      <div class="scion-profile-footer clr-row clr-justify-content-end">
+        <button class="btn btn-icon btn-danger-outline clr-col-3" (click)="logout()">
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #spinner>
+  <clr-spinner></clr-spinner>
+</ng-template>

@@ -14,6 +14,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StravaHttpInterceptor } from './api-services/strava-http.interceptor';
 import { ClarityModule } from '@clr/angular';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
     ActivityListComponent,
     ActivityComponent,
     StatisticsComponent,
+    ProfileComponent,
     TokenResolveComponent
   ],
   imports: [
@@ -29,7 +32,8 @@ import { StatisticsComponent } from './statistics/statistics.component';
     BrowserAnimationsModule, // module required by SCION Workbench
     BrowserModule,
     AppRoutingModule,
-    ClarityModule
+    ClarityModule,
+    FormsModule
   ],
   providers: [
     AuthService,

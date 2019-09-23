@@ -6,12 +6,14 @@ import { StravaApiService } from './api-services/strava-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TokenResolveComponent } from './core/auth/token-resolve/token-resolve.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
   {path: 'activities', component: ActivityListComponent},
   {path: 'activity/:id', component: ActivityComponent},
   {path: 'statistics', component: StatisticsComponent},
+  {path: 'profile', component: ProfileComponent},
   {path: 'token', component: TokenResolveComponent}
 ];
 

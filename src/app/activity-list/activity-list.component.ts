@@ -10,14 +10,17 @@ import { StravaApiService } from '../api-services/strava-api.service';
 export class ActivityListComponent implements OnInit {
 
   activities: any[] = [];
+  isLoading = false;
 
   constructor(private stravaApiService: StravaApiService) {
   }
 
   ngOnInit() {
+    this.isLoading = true;
     this.stravaApiService.getActivities()
       .subscribe(activities => {
         this.activities = activities;
+        this.isLoading = false;
       });
   }
 

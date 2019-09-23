@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StravaApiService } from '../api-services/strava-api.service';
 import { ClrDatagridSortOrder } from '@clr/angular';
+import { ActivatedRoute } from '@angular/router';
+import { WorkbenchView } from '@scion/workbench';
 
 @Component({
   selector: 'app-statistics',
@@ -11,11 +13,14 @@ export class StatisticsComponent implements OnInit {
   descSortOrder = ClrDatagridSortOrder.DESC;
   isLoading = false;
 
-  constructor(private stravaApiService: StravaApiService) {
+  constructor(private stravaApiService: StravaApiService,
+              private route: ActivatedRoute,
+              private view: WorkbenchView) {
   }
 
   ngOnInit() {
     this.isLoading = true;
+    this.route.paramMap.subscribe(() => this.view.title = 'Statistics');
     this.stravaApiService.getActivities(100)
       .subscribe(activities => {
         this.activities = activities;

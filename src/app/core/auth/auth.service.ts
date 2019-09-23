@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { WbNavigationExtras, WorkbenchRouter } from '@scion/workbench';
+import { WorkbenchRouter } from '@scion/workbench';
 import { flatMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -11,7 +12,8 @@ export class AuthService {
   private _STRAVA_SCOPE = 'read_all,activity:read_all';
 
   constructor(private http: HttpClient,
-              private workbenchRouter: WorkbenchRouter) {
+              private workbenchRouter: WorkbenchRouter,
+              private router: Router) {
   }
 
   get accessToken() {
@@ -22,6 +24,12 @@ export class AuthService {
 
   login() {
     window.location.href = `https://www.strava.com/oauth/authorize?client_id=${environment.authConfig.clientId}&response_type=code&redirect_uri=${environment.authConfig.redirectUrl}&approval_prompt=force&scope=${this._STRAVA_SCOPE}`;
+  }
+
+  logout() {
+    this._tokenInfo = null;
+    localStorage.removeItem('strava');
+    this.router.navigate(['/']);
   }
 
   getTokenFromLocalStorage(): boolean {
@@ -38,10 +46,6 @@ export class AuthService {
     this.http.post(`https://www.strava.com/oauth/token?client_id=${environment.authConfig.clientId}&client_secret=${environment.authConfig.clientSecret}&code=${code}&grant_type=authorization_code`, {})
       .subscribe((tokenInfo: StravaTokenInfo) => {
         this._setAccessToken(tokenInfo);
-        const extras: WbNavigationExtras = {
-          target: 'blank'
-        };
-        this.workbenchRouter.navigate(['/activities'], extras);
       });
   }
 

@@ -14,29 +14,35 @@ export class StravaHttpInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    req = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${this.authService.accessToken}`
-      }
-    });
+    if (this.authService.accessToken) {
+      req = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${this.authService.accessToken}`
+        }
+      });
+    }
     return next.handle(req).pipe(catchError(error => {
       if (error && error.status === 401) {
-        if (this.refreshTokenInProgress) {
-          return this.refreshTokenSubject.pipe(
-            filter(result => result !== null),
-            take(1),
-            flatMap(() => next.handle(req))
-          );
+        if (this.authService.accessToken) {
+          if (this.refreshTokenInProgress) {
+            return this.refreshTokenSubject.pipe(
+              filter(result => result !== null),
+              take(1),
+              flatMap(() => next.handle(req))
+            );
+          } else {
+            this.refreshTokenInProgress = true;
+            this.refreshTokenSubject.next(null);
+            return this.authService.refreshTokenFromApi().pipe(
+              flatMap((success) => {
+                this.refreshTokenSubject.next(success);
+                return next.handle(req);
+              }),
+              finalize(() => this.refreshTokenInProgress = false)
+            );
+          }
         } else {
-          this.refreshTokenInProgress = true;
-          this.refreshTokenSubject.next(null);
-          return this.authService.refreshTokenFromApi().pipe(
-            flatMap((success) => {
-              this.refreshTokenSubject.next(success);
-              return next.handle(req);
-            }),
-            finalize(() => this.refreshTokenInProgress = false)
-          );
+          this.authService.login();
         }
       } else {
         return throwError(error);
