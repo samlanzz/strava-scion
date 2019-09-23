@@ -15,7 +15,9 @@ export class AuthService {
   }
 
   get accessToken() {
-    return this._tokenInfo.access_token;
+    if (this._tokenInfo) {
+      return this._tokenInfo.access_token;
+    }
   }
 
   login() {
@@ -35,8 +37,7 @@ export class AuthService {
   getTokenFromApi(code: string) {
     this.http.post(`https://www.strava.com/oauth/token?client_id=${environment.authConfig.clientId}&client_secret=${environment.authConfig.clientSecret}&code=${code}&grant_type=authorization_code`, {})
       .subscribe((tokenInfo: StravaTokenInfo) => {
-        this._tokenInfo = tokenInfo;
-        localStorage.setItem('strava', JSON.stringify(tokenInfo));
+        this._setAccessToken(tokenInfo);
         const extras: WbNavigationExtras = {
           target: 'blank'
         };
@@ -45,11 +46,16 @@ export class AuthService {
   }
 
   refreshTokenFromApi(): Observable<StravaTokenInfo> {
-    return this.http.post(`https://www.strava.com/oauth/token?client_id=${environment.authConfig.clientId}&client_secret=${environment.authConfig.clientSecret}&grant_type=authorization_code&refresh_token=${this._tokenInfo.refresh_token}`, {})
+    return this.http.post(`https://www.strava.com/oauth/token?client_id=${environment.authConfig.clientId}&client_secret=${environment.authConfig.clientSecret}&grant_type=refresh_token&refresh_token=${this._tokenInfo.refresh_token}`, {})
       .pipe(flatMap((tokenInfo: StravaTokenInfo) => {
-        this._tokenInfo = tokenInfo;
+        this._setAccessToken(tokenInfo);
         return of(tokenInfo);
       }));
+  }
+
+  private _setAccessToken(tokenInfo): void {
+    this._tokenInfo = tokenInfo;
+    localStorage.setItem('strava', JSON.stringify(tokenInfo));
   }
 }
 
