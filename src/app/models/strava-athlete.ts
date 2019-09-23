@@ -1,4 +1,4 @@
-export class Athlete {
+export class StravaAthlete {
   badge_type_id: number;
   city: string;
   country: string;

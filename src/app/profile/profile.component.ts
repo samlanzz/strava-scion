@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StravaApiService } from '../api-services/strava-api.service';
-import { Athlete } from '../models/athlete';
+import { StravaAthlete } from '../models/strava-athlete';
 import { AuthService } from '../core/auth/auth.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AuthService } from '../core/auth/auth.service';
 export class ProfileComponent implements OnInit {
 
   isLoading = false;
-  athlete: Athlete;
+  athlete: StravaAthlete;
 
   constructor(private stravaApiService: StravaApiService,
               private authService: AuthService) {

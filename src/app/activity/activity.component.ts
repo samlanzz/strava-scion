@@ -3,6 +3,7 @@ import { WorkbenchView } from '@scion/workbench';
 import { StravaApiService } from '../api-services/strava-api.service';
 import { concatMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { StravaActivity } from '../models/strava-activity';
 
 @Component({
   selector: 'app-activity',
@@ -11,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ActivityComponent implements OnInit {
 
-  activity: any;
+  activity: StravaActivity;
 
   constructor(private route: ActivatedRoute,
               private stravaApiService: StravaApiService,
@@ -23,6 +24,7 @@ export class ActivityComponent implements OnInit {
       return this.stravaApiService.getActivityById(params.id);
     })).subscribe(activity => {
       this.activity = activity;
+      console.log(activity);
       this.view.title = activity.name;
       this.view.heading = new Date(activity.start_date).toLocaleDateString();
     });
