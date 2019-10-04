@@ -60,6 +60,7 @@ export class AuthService {
   private _setAccessToken(tokenInfo): void {
     this._tokenInfo = tokenInfo;
     localStorage.setItem('strava', JSON.stringify(tokenInfo));
+    window.location.reload();
   }
 }
 

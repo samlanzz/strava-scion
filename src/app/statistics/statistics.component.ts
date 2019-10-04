@@ -21,7 +21,7 @@ export class StatisticsComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     this.route.paramMap.subscribe(() => this.view.title = 'Statistics');
-    this.stravaApiService.getActivities(100)
+    this.stravaApiService.getActivities(150)
       .subscribe(activities => {
         this.activities = activities;
         this.isLoading = false;

@@ -22,6 +22,9 @@ export class ActivityListComponent implements OnInit {
       .subscribe(activities => {
         this.activities = activities;
         this.isLoading = false;
+      }, error => {
+        console.log(error);
+        this.isLoading = false;
       });
   }
 
