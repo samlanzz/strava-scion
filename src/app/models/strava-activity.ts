@@ -6,13 +6,17 @@ export class StravaActivity {
   athlete: { id: number, resource_state: number };
   athlete_count: number;
   available_zones: [];
+  average_cadence: number;
+  average_heartrate: number;
   average_speed: number;
+  average_watts: number;
   best_efforts: StravaEffort[];
   calories: number;
   comment_count: number;
   commute: boolean;
   description: string;
   device_name: string;
+  device_watts: number;
   display_hide_heartrate_option: boolean;
   distance: number;
   elapsed_time: number;
@@ -28,6 +32,7 @@ export class StravaActivity {
   has_kudoed: boolean;
   heartrate_opt_out: boolean;
   id: number;
+  kilojoules: number;
   kudos_count: number;
   laps: [];
   location_city: string;
@@ -35,7 +40,9 @@ export class StravaActivity {
   location_state: string;
   manual: boolean;
   map: StravaMap;
+  max_heartrate: number;
   max_speed: number;
+  max_watts: number;
   moving_time: number;
   name: string;
   perceived_exertion: number;
@@ -69,5 +76,6 @@ export class StravaActivity {
   upload_id_str: string;
   utc_offset: number;
   visibility: string;
+  weighted_average_watts: string;
   workout_type: number;
 }

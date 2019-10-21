@@ -13,16 +13,16 @@ import { TokenResolveComponent } from './core/auth/token-resolve/token-resolve.c
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StravaHttpInterceptor } from './api-services/strava-http.interceptor';
 import { ClarityModule } from '@clr/angular';
-import { StatisticsComponent } from './statistics/statistics.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { StatisticCompareLineChartComponent } from './statistics/statistic-compare-line-chart/statistic-compare-line-chart.component';
+import { StatisticsModule } from './statistics/statistics.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ActivityListComponent,
     ActivityComponent,
-    StatisticsComponent,
     ProfileComponent,
     TokenResolveComponent
   ],
@@ -33,8 +33,10 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ClarityModule,
-    FormsModule
+    FormsModule,
+    StatisticsModule
   ],
+  exports: [StatisticCompareLineChartComponent],
   providers: [
     AuthService,
     {
