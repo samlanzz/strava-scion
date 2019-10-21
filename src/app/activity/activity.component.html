@@ -1,5 +1,25 @@
-<ng-container *ngIf="activity">
+<div *ngIf="activity" class="activity">
   <h2>{{activity.name}}</h2>
   <h3>{{activity.description}}</h3>
-  Calories burned: {{activity.calories}} <br>
-</ng-container>
+  <clr-tabs>
+    <clr-tab>
+      <button clrTabLink id="details">Metadata</button>
+      <clr-tab-content id="details-content" *clrIfActive="true">
+        <table class="table table-vertical">
+          <tbody>
+          <tr *ngFor="let data of detailData">
+            <th>{{data.title}}</th>
+            <td>{{data.value}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </clr-tab-content>
+    </clr-tab>
+    <clr-tab>
+      <button clrTabLink>...</button>
+      <clr-tab-content *clrIfActive>
+        ...
+      </clr-tab-content>
+    </clr-tab>
+  </clr-tabs>
+</div>
