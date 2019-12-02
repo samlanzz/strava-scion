@@ -6,6 +6,7 @@ import { ClarityModule } from '@clr/angular';
 import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { WorkbenchModule } from '@scion/workbench';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { WorkbenchModule } from '@scion/workbench';
     ClarityModule,
     FormsModule,
     ChartsModule,
+    TranslateModule
   ],
   declarations: [
     StatisticsComponent,

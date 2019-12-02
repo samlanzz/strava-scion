@@ -23,6 +23,8 @@
     "@clr/angular": "2.2.0",
     "@clr/icons": "2.2.0",
     "@clr/ui": "2.2.0",
+    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/http-loader": "^4.0.0",
     "@scion/dimension": "0.0.0-beta.25",
     "@scion/viewport": "0.0.0-beta.25",
     "@scion/workbench": "0.0.0-beta.25",

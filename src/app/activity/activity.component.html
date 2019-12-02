@@ -3,12 +3,12 @@
   <h3>{{activity.description}}</h3>
   <clr-tabs>
     <clr-tab>
-      <button clrTabLink id="details">Metadata</button>
+      <button clrTabLink id="details">{{'metadata' | translate}}</button>
       <clr-tab-content id="details-content" *clrIfActive="true">
         <table class="table table-vertical">
           <tbody>
           <tr *ngFor="let data of detailData">
-            <th>{{data.title}}</th>
+            <th>{{'activity.'+data.title | translate}}</th>
             <td>{{data.value}}</td>
           </tr>
           </tbody>

@@ -3,6 +3,7 @@ import { AuthService } from './core/auth/auth.service';
 import { WorkbenchRouter, WorkbenchService } from '@scion/workbench';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService,
               workbench: WorkbenchService,
+              translate: TranslateService,
               wbRouter: WorkbenchRouter) {
+    translate.setDefaultLang('en');
+    translate.use('en');
+
     workbench.views$
       .pipe(takeUntil(this._destroy$))
       .subscribe(views => {

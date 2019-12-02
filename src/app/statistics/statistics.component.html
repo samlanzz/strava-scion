@@ -4,37 +4,37 @@
       <button type="button" class="btn btn-sm btn-secondary" [wbRouterLink]="getSelectedLink()"
               [disabled]="selectedActivities.length !== 1">
         <clr-icon shape="folder-open"></clr-icon>
-        Open
+        {{'common.open' | translate}}
       </button>
     </div>
     <div class="btn-group">
       <clr-dropdown>
         <button type="button" class="btn btn-sm btn-secondary" clrDropdownTrigger
                 [disabled]="selectedActivities.length <= 1">
-          Analyse
+          {{'statistic.analyse' | translate}}
           <clr-icon shape="caret down"></clr-icon>
         </button>
         <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
-          <button type="button" (click)="onAnalyseAvgWatts()" clrDropdownItem>Average watts</button>
-          <button type="button" (click)="onAnalyseElapsedTime()" clrDropdownItem>Elapsed time</button>
-          <button type="button" (click)="onAnalyseAverageHeartrate()" clrDropdownItem>Average heartrate</button>
+          <button type="button" (click)="onAnalyseAvgWatts()" clrDropdownItem>{{'activity.average_watts' | translate}}</button>
+          <button type="button" (click)="onAnalyseElapsedTime()" clrDropdownItem>{{'activity.elapsed_time' | translate}}</button>
+          <button type="button" (click)="onAnalyseAverageHeartrate()" clrDropdownItem>{{'activity.average_heartrate' | translate}}</button>
         </clr-dropdown-menu>
       </clr-dropdown>
     </div>
   </clr-dg-action-bar>
 
-  <clr-dg-column [clrDgSortBy]="'type'">Type</clr-dg-column>
-  <clr-dg-column [clrDgField]="'name'">Title</clr-dg-column>
-  <clr-dg-column [clrDgSortBy]="'start_date'">Date</clr-dg-column>
-  <clr-dg-column [clrDgField]="'average_watts'">Avg. watts</clr-dg-column>
-  <clr-dg-column [clrDgField]="'max_watts'">Max watts</clr-dg-column>
-  <clr-dg-column [clrDgField]="'distance'">Km</clr-dg-column>
-  <clr-dg-column [clrDgField]="'average_speed'">Avg. km/h</clr-dg-column>
-  <clr-dg-column [clrDgField]="'max_speed'" [clrDgSortOrder]="descSortOrder">Max km/h</clr-dg-column>
-  <clr-dg-column [clrDgSortBy]="'moving_time'">Time</clr-dg-column>
-  <clr-dg-column [clrDgField]="'average_heartrate'">Avg. bpm</clr-dg-column>
-  <clr-dg-column [clrDgField]="'max_heartrate'">Max bpm</clr-dg-column>
-  <clr-dg-column [clrDgField]="'total_elevation_gain'">Total elev. gain</clr-dg-column>
+  <clr-dg-column [clrDgSortBy]="'type'">{{'common.type' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">{{'common.title' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgSortBy]="'start_date'">{{'common.date' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'average_watts'">{{'activity.average_watts' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'max_watts'">{{'activity.max_watts' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'distance'">{{'location.km' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'average_speed'">{{'location.kmh' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'max_speed'" [clrDgSortOrder]="descSortOrder">{{'activity.max_speed' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgSortBy]="'moving_time'">{{'common.time' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'average_heartrate'">{{'activity.average_heartrate' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'max_heartrate'">{{'activity.max_heartrate' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'total_elevation_gain'">{{'activity.total_elevation_gain' | translate}}</clr-dg-column>
 
   <clr-dg-row *clrDgItems="let activity of activities" [clrDgItem]="activity">
     <clr-dg-cell>
@@ -87,7 +87,7 @@
 </clr-datagrid>
 
 <clr-modal [(clrModalOpen)]="isInspectionModalOpen" clrModalSize="xl">
-  <h3 class="modal-title">Watt average analysis</h3>
+  <h3 class="modal-title">{{'statistic.analysis' | translate}}</h3>
   <div class="modal-body">
     <app-statistic-compare-line-chart [lineChartData]="lineChartData"
                                       [lineChartLabels]="lineChartLabels"></app-statistic-compare-line-chart>

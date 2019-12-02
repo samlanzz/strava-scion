@@ -1,17 +1,17 @@
 <wb-workbench>
-  <wb-activity title="Activities"
+  <wb-activity [title]="'activity.title_p' | translate"
                itemText="device_hub"
                itemCssClass="material-icons"
                routerLink="activities">
   </wb-activity>
-  <wb-activity title="Login"
+  <wb-activity [title]="'framework.login' | translate"
                itemText="arrow_right_alt"
                itemCssClass="material-icons"
                routerLink="token"
                *ngIf="!auth; else profile">
   </wb-activity>
   <ng-template #profile>
-    <wb-activity title="Account"
+    <wb-activity [title]="'user.account' | translate"
                  itemText="person"
                  itemCssClass="material-icons"
                  routerLink="profile">

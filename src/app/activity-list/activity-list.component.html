@@ -1,7 +1,7 @@
 <clr-datagrid [clrDgLoading]="isLoading">
-  <clr-dg-column [clrDgSortBy]="'type'">Type</clr-dg-column>
-  <clr-dg-column [clrDgField]="'name'">Title</clr-dg-column>
-  <clr-dg-column [clrDgSortBy]="'start_date'" >Date</clr-dg-column>
+  <clr-dg-column [clrDgSortBy]="'type'">{{'common.type' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">{{'common.title' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgSortBy]="'start_date'" >{{'common.date' | translate}}</clr-dg-column>
 
   <clr-dg-row *clrDgItems="let activity of activities" class="cursor-pointer" wbRouterLink="/activity/{{activity.id}}">
     <clr-dg-cell>
