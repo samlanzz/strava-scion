@@ -1,0 +1,31 @@
+.scion-fullheight {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.scion-profile-footer {
+  flex: 0 0 auto;
+}
+
+.scion-profile-body {
+  flex: 1 1 auto;
+  border-top: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.image-rounded {
+  height: 5rem;
+  width: 5rem;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.profile-image {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}

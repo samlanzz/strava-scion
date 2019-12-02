@@ -1,0 +1,21 @@
+<clr-datagrid [clrDgLoading]="isLoading">
+  <clr-dg-column [clrDgSortBy]="'type'">{{'common.type' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">{{'common.title' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgSortBy]="'start_date'" >{{'common.date' | translate}}</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let activity of activities" class="cursor-pointer" wbRouterLink="/activity/{{activity.id}}">
+    <clr-dg-cell>
+      <ng-container [ngSwitch]="activity.type">
+        <div *ngSwitchCase="'Ride'" class="material-icons">directions_bike</div>
+        <div *ngSwitchCase="'VirtualRide'" class="material-icons">important_devices</div>
+        <div *ngSwitchCase="'Workout'" class="material-icons">fitness_center</div>
+        <div *ngSwitchCase="'Run'" class="material-icons">directions_run</div>
+        <div *ngSwitchCase="'Yoga'" class="material-icons">emoji_people</div>
+        <div *ngSwitchCase="'Swim'" class="material-icons">pool</div>
+        <div *ngSwitchCase="'Hike'" class="material-icons">terrain</div>
+      </ng-container>
+    </clr-dg-cell>
+    <clr-dg-cell>{{activity.name}}</clr-dg-cell>
+    <clr-dg-cell>{{activity.start_date | date}}</clr-dg-cell>
+  </clr-dg-row>
+</clr-datagrid>

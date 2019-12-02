@@ -1,6 +1,13 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-snake-case"
+    ],
     "array-type": false,
     "arrow-parens": false,
     "deprecation": {
@@ -13,7 +20,8 @@
       true,
       "attribute",
       "app",
-      "camelCase"
+      "camelCase",
+      "snakeCase"
     ],
     "component-selector": [
       true,
