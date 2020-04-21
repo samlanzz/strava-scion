@@ -22,6 +22,10 @@
     "login": "Login",
     "logout": "Logout"
   },
+  "location": {
+    "km": "Km",
+    "kmh": "Km/h"
+  },
   "activity": {
     "title": "Activity",
     "title_p": "Activities",
