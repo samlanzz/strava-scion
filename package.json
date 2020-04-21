@@ -30,7 +30,7 @@
     "@scion/workbench": "0.0.0-beta.25",
     "chart.js": "^2.8.0",
     "ng2-charts": "^2.3.0",
-    "rxjs": "~6.5.3",
+    "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.3",
     "@clr/core": "^3.0.0",
