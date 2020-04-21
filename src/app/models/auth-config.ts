@@ -3,4 +3,8 @@ export class AuthConfig {
   url: string;
   redirectUrl: string;
   clientSecret: string;
+
+  constructor(initializer?: Partial<AuthConfig>) {
+    Object.assign(this, initializer);
+  }
 }

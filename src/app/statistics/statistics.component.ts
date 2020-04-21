@@ -62,7 +62,7 @@ export class StatisticsComponent implements OnInit {
 
   onAnalyseAvgWatts(): void {
     const data = this.selectedActivities
-      .filter(value => value.has_heartrate)
+      .filter(value => value.average_watts)
       .sort((a, b) => new Date(a.start_date) > new Date(b.start_date) ? 1 : -1);
     this.lineChartData = [
       {
@@ -76,7 +76,7 @@ export class StatisticsComponent implements OnInit {
 
   onAnalyseElapsedTime(): void {
     const data = this.selectedActivities
-      .filter(value => value.has_heartrate)
+      .filter(value => value.elapsed_time)
       .sort((a, b) => new Date(a.start_date) > new Date(b.start_date) ? 1 : -1);
     this.lineChartData = [
       {
